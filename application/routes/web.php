@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/test', function() {
+    return view('test');
+});
+
 Route::get('/api/showuser',     'JsonController@showuser');
 Route::get('/api/showcourse',   'JsonController@showcourse');
 
@@ -81,9 +85,9 @@ Route::post('/api/posturedelete',   'PostursController@delete');
 Route::get('/photo',          'PhotoController@photoform');
 Route::post('/api/photo',     'PhotoController@save');
 
-Route::get('/bmi',          'bmiController@bmiform');
-Route::get('/bmr',          'bmiController@bmrform');
-Route::post('/api/bmi',     'bmiController@bmi');
+Route::get('/bmi',          'BmiController@bmiform');
+Route::get('/bmr',          'BmiController@bmrform');
+Route::post('/api/bmi',     'BmiController@bmi');
 
 Route::get('/video',        'VideoController@videoform');
 Route::post('/api/video',   'VideoController@save');

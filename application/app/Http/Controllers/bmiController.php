@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class bmiController extends Controller 
+class BmiController extends Controller 
 {
     public function bmi(Request $request) 
     {
@@ -16,7 +16,7 @@ class bmiController extends Controller
         return view('bmi');
     }
 
-public function bmrform()
+    public function bmrform()
     {
         return view('bmr');
     }

@@ -89,28 +89,25 @@ class CourseController extends Controller
    
     public function show()
     {
-         $course = new Course();
-         $course->all();     
+        $course = new Course();
+        $course->all();     
 
         return $course;
     }
 
-
-
     public function courseform()
     {
-        $courses = new Course();
-        $courses->all();
+        $courses = Course::all();
 
         return view('course', [
             'courses' => $courses
         ]);
-        
     }
     public function courseformupdate()
     {
         return view('courseupdate');
     }
+    
     public function courseformdelete()
     {
         return view('coursedelete');
