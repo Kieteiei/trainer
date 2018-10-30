@@ -15,10 +15,12 @@ Route::get('/test', function() {
     return view('test');
 });
 
-Route::get('/', 	      'PageController@index');
-Route::get('/page/bmi',   'PageController@renderBmi');
-Route::post('/page/bmi',  'PageController@renderCalBmi');
-Route::get('/page/bmr',   'PageController@renderBmr');
+Route::get('/', 	        'PageController@index');
+Route::get('/page/bmi',     'PageController@renderBmi');
+Route::post('/page/bmi',    'PageController@renderCalBmi');
+Route::get('/page/bmr',     'PageController@renderBmr');
+
+Route::post('/auth/login',  'AuthController@login');
 
 Route::group(['namespace' => 'User', 'prefix' => 'user'],
     function () {

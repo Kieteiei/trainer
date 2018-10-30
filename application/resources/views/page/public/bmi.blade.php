@@ -16,7 +16,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">โปรแกรมคำนวณหาค่าดัชนีมวลกาย(BMI)</div>
             <div class="panel-body">
-                <form  action="/api/bmi" method="post">
+                <form action="/page/bmi" method="post">
                     @csrf
 
                     <div class="form-group">

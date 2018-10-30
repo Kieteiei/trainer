@@ -4,7 +4,10 @@
             <a class="navbar-brand" href="#"><span>Lumino</span>Admin</a>
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
-                    <a onclick="document.getElementById('id01').style.display='block'" style="width:auto;"class="active">Login</a>
+                    <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" data-toggle="modal" data-target="#register-modal">Register</a>
                 </li>
                 <li class="dropdown">
                     <a href="/logout">Logout</a>
@@ -20,32 +23,69 @@
     </div>
 </nav>
 
- <div id="id01" class="modal">
-    <form class="modal-content animate" action="/api/registerlogin" method="POST">
-        <div class="container">
-            <label><b>Username</b></label><br>
-            <input type="text" name="userName"><br>
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="loginmodal-container">
+            <h1>เข้าสู่ระบบ</h1><br>
+            <form action="/auth/login" method="post">
+                @csrf
+                
+                <input type="text" name="user_name" placeholder="Username">
+                <input type="password" name="password" placeholder="Password">
 
-            <label><b>Password</b></label><br>
-            <input type="password" name="password"><br>
-        
-            <button type="submit">Login</button> &nbsp;&nbsp; <br>  
-            <fb:login-button 
-                scope="public_profile,email"
-                class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" 
-                onlogin="checkLoginState();">
-            </fb:login-button>
+                <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+                <fb:login-button 
+                    scope="public_profile,email"
+                    class="fb-login-button" 
+                    data-max-rows="1" 
+                    data-size="large" 
+                    data-button-type="login_with" 
+                    data-show-faces="false" 
+                    data-auto-logout-link="false" 
+                    data-use-continue-as="false" 
+                    data-width="290"
+                    onlogin="checkLoginState();">
+                    Continue with Facebook
+                </fb:login-button>
+            </form>
+            <form action="/api/Loginfacebook"method="post"name="frmMain" id="frmMain">
+                <input type="hidden" id="hdnFbID" name="hdnFbID">
+                <input type="hidden" id="hdnName" name="hdnName">
+                <input type="hidden" id="hdnEmail" name="hdnEmail">
+            </form>
         </div>
-    
-        <a href="/api/register"> Register </a>
-        <div class="low" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-            <span class="psw">Forgot <a href="#">password?</a></span>
-        </div>
-    </form>
-    <form action="/api/Loginfacebook"method="post"name="frmMain" id="frmMain">
-        <input type="hidden" id="hdnFbID" name="hdnFbID">
-        <input type="hidden" id="hdnName" name="hdnName">
-        <input type="hidden" id="hdnEmail" name="hdnEmail">
-    </form>
+    </div>
 </div>
+
+<div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="loginmodal-container">
+            <h1>สมัครสมาชิก</h1><br>
+            <form action="/api/registerlogin" method="post">
+                <input type="text" name="user_name" placeholder="Username">
+                <input type="password" name="password" placeholder="Password">
+
+                <input type="submit" name="login" class="login loginmodal-submit" value="Register">
+                <fb:login-button 
+                    scope="public_profile,email"
+                    class="fb-login-button" 
+                    data-max-rows="1" 
+                    data-size="large" 
+                    data-button-type="login_with" 
+                    data-show-faces="false" 
+                    data-auto-logout-link="false" 
+                    data-use-continue-as="false" 
+                    data-width="290"
+                    onlogin="checkLoginState();">
+                    Continue with Facebook
+                </fb:login-button>
+            </form>
+            <form action="/api/Loginfacebook"method="post"name="frmMain" id="frmMain">
+                <input type="hidden" id="hdnFbID" name="hdnFbID">
+                <input type="hidden" id="hdnName" name="hdnName">
+                <input type="hidden" id="hdnEmail" name="hdnEmail">
+            </form>
+        </div>
+    </div>
+</div>
+    

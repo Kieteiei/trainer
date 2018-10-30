@@ -11,24 +11,24 @@
     </div>
     <div class="divider"></div>
     <ul class="nav menu">
-        <li><a href="/bmi"><i class="fa fa-dashboard">&nbsp;</i> bmi</a></li>
-        <li><a href="/bmr"><i class="fa fa-calendar">&nbsp;</i> bmr</a></li>
+        <li><a href="/page/bmi"><i class="fa fa-dashboard">&nbsp;</i> bmi</a></li>
+        <li><a href="/page/bmr"><i class="fa fa-calendar">&nbsp;</i> bmr</a></li>
 
-        @if (Session::has('auth') && Session::get('auth_type' === 'user'))
+        @if (Session::has('auth_user') && Session::get('auth_type') === 'USER')
             <li><a href="/user/courses"><i class="fa fa-calendar">&nbsp;</i> คอร์ส</a></li>
             <li><a href="/user/nutritions"><i class="fa fa-calendar">&nbsp;</i> โภชนาการ</a></li>
             <li><a href="/user/practicerecords"><i class="fa fa-calendar">&nbsp;</i> บันทึกการฝึก</a></li>
             <li><a href="/user/effectrecords"><i class="fa fa-calendar">&nbsp;</i> บันทึกผลการฝึก</a></li>
         @endif
 
-        @if (Session::has('auth') && Session::get('auth_type' === 'trainer'))
+        @if (Session::has('auth_user') && Session::get('auth_type') === 'TRAINER')
             <li><a href="/trainer/courses"><i class="fa fa-calendar">&nbsp;</i> คอร์ส</a></li>
             <li><a href="/trainer/nutritions"><i class="fa fa-calendar">&nbsp;</i> โภชนาการ</a></li>
             <li><a href="/trainer/practicerecords"><i class="fa fa-calendar">&nbsp;</i> บันทึกการฝึก</a></li>
             <li><a href="/trainer/effectrecords"><i class="fa fa-calendar">&nbsp;</i> บันทึกผลการฝึก</a></li>
         @endif
 
-        @if (Session::has('auth') && Session::get('auth_type' === 'admin'))
+        @if (Session::has('auth_user') && Session::get('auth_type')  === 'ADMIN')
             <li><a href="/admin/users"><i class="fa fa-calendar">&nbsp;</i> ผู้ใช้งาน</a></li>
             <li><a href="/admin/courses"><i class="fa fa-calendar">&nbsp;</i> คอร์ส</a></li>
             <li><a href="/admin/appeals"><i class="fa fa-calendar">&nbsp;</i> ร้องเรียน</a></li>
