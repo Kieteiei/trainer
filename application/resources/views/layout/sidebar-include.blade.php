@@ -13,15 +13,31 @@
     <ul class="nav menu">
         <li><a href="/bmi"><i class="fa fa-dashboard">&nbsp;</i> bmi</a></li>
         <li><a href="/bmr"><i class="fa fa-calendar">&nbsp;</i> bmr</a></li>
-        <li><a href="/course"><i class="fa fa-calendar">&nbsp;</i> คอร์ส</a></li>
-        <li><a href="/nutrition"><i class="fa fa-calendar">&nbsp;</i> โภชนาการ</a></li>
-        <li><a href="/practicerecord"><i class="fa fa-calendar">&nbsp;</i> บันทึกการฝึก</a></li>
-        <li><a href="/effectrecord"><i class="fa fa-calendar">&nbsp;</i> บันทึกผลการฝึก</a></li>
-        <li><a href="/appeal"><i class="fa fa-calendar">&nbsp;</i> ร้องเรียน</a></li>
-        <li><a href="/comment"><i class="fa fa-calendar">&nbsp;</i> ความคิดเห็น</a></li>
-        <li><a href="/posture"><i class="fa fa-calendar">&nbsp;</i> ท่าการออกกำลังกาย</a></li>
-        <li><a href="/photo"><i class="fa fa-calendar">&nbsp;</i> รูปการออกกำลังกาย</a></li>
-        <li><a href="/video"><i class="fa fa-calendar">&nbsp;</i> วีดีโอการออกกำลังกาย</a></li>
+
+        @if (Session::has('auth') && Session::get('auth_type' === 'user'))
+            <li><a href="/user/courses"><i class="fa fa-calendar">&nbsp;</i> คอร์ส</a></li>
+            <li><a href="/user/nutritions"><i class="fa fa-calendar">&nbsp;</i> โภชนาการ</a></li>
+            <li><a href="/user/practicerecords"><i class="fa fa-calendar">&nbsp;</i> บันทึกการฝึก</a></li>
+            <li><a href="/user/effectrecords"><i class="fa fa-calendar">&nbsp;</i> บันทึกผลการฝึก</a></li>
+        @endif
+
+        @if (Session::has('auth') && Session::get('auth_type' === 'trainer'))
+            <li><a href="/trainer/courses"><i class="fa fa-calendar">&nbsp;</i> คอร์ส</a></li>
+            <li><a href="/trainer/nutritions"><i class="fa fa-calendar">&nbsp;</i> โภชนาการ</a></li>
+            <li><a href="/trainer/practicerecords"><i class="fa fa-calendar">&nbsp;</i> บันทึกการฝึก</a></li>
+            <li><a href="/trainer/effectrecords"><i class="fa fa-calendar">&nbsp;</i> บันทึกผลการฝึก</a></li>
+        @endif
+
+        @if (Session::has('auth') && Session::get('auth_type' === 'admin'))
+            <li><a href="/admin/users"><i class="fa fa-calendar">&nbsp;</i> ผู้ใช้งาน</a></li>
+            <li><a href="/admin/courses"><i class="fa fa-calendar">&nbsp;</i> คอร์ส</a></li>
+            <li><a href="/admin/appeals"><i class="fa fa-calendar">&nbsp;</i> ร้องเรียน</a></li>
+            <li><a href="/admin/comments"><i class="fa fa-calendar">&nbsp;</i> ความคิดเห็น</a></li>
+            <li><a href="/admin/postures"><i class="fa fa-calendar">&nbsp;</i> ท่าการออกกำลังกาย</a></li>
+            <li><a href="/admin/photos"><i class="fa fa-calendar">&nbsp;</i> รูปการออกกำลังกาย</a></li>
+            <li><a href="/admin/videos"><i class="fa fa-calendar">&nbsp;</i> วีดีโอการออกกำลังกาย</a></li>
+        @endif
+        
         <li class="parent ">
             <a data-toggle="collapse" href="#sub-item-1">
                 <i class="fa fa-navicon">&nbsp;</i> Multilevel <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><i class="fa fa-plus"></i></span>

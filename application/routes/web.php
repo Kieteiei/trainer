@@ -15,79 +15,94 @@ Route::get('/test', function() {
     return view('test');
 });
 
-Route::get('/api/showuser',     'JsonController@showuser');
-Route::get('/api/showcourse',   'JsonController@showcourse');
+Route::get('/', 	      'PageController@index');
+Route::get('/page/bmi',   'PageController@renderBmi');
+Route::post('/page/bmi',  'PageController@renderCalBmi');
+Route::get('/page/bmr',   'PageController@renderBmr');
 
-Route::get('/', 	            'PageController@index');
-Route::get('/api/showusers',    'PageController@showuser');
+Route::group(['namespace' => 'User', 'prefix' => 'user'],
+    function () {
+        Route::get('/courses',              'CourseController@renderAll');
+        Route::post('/courses',             'CourseController@create');
+        Route::get('/courses/{id}',         'CourseController@renderOne');
+        Route::patch('/courses',            'CourseController@update');
+        Route::delete('/courses',           'CourseController@delete');
 
-// Route::get('/showdata',     'UserController@update');
-Route::get('/api/home',             'UserController@homefrom');
-Route::get('/api/homeuser',         'UserController@homeuser');
-Route::get('/api/homeadmin',        'UserController@homeadmin');
-Route::get('/api/hometrainer',      'UserController@hometrainer');
-Route::get('/api/user',             'UserController@userfrom');
-Route::get('/api/register',         'UserController@registerform');
-Route::post('/api/register',        'UserController@register');
-Route::post('/api/updates',         'UserController@updates');
-Route::post('/api/registerlogin',   'UserController@login');
-Route::post('/api/Loginfacebook',   'UserController@Loginfacebook');
-Route::post('/api/userSearch',      'UserController@search');
-Route::get('/api/updateuser',       'UserController@update');
-Route::get('/logout',               'UserController@logout');
-Route::get('/sql',                  'UserController@sql');
+        Route::get('/nutritions',           'NutritionController@renderAll');
 
-Route::get('/api/course',               'CourseController@show');
-Route::post('/api/course',              'CourseController@save');
-Route::post('/api/courseupdate',        'CourseController@update');
-Route::post('/api/courseupdateAPI',     'CourseController@updateAPI');
-Route::post('/api/coursedelete',        'CourseController@delete');
-Route::post('/api/coursedeletejson',    'CourseController@deletejson');
-Route::post('/api/coursewhere',         'CourseController@where');
+        Route::get('/practicerecords',      'PracticeRecordController@renderAll');
+        Route::post('/practicerecords',     'PracticeRecordController@create');
+        Route::get('/practicerecords/{id}', 'PracticeRecordController@renderOne');
+        Route::patch('/practicerecords',    'PracticeRecordController@update');
+        Route::delete('/practicerecords',   'PracticeRecordController@delete');
 
-Route::get('/course',                   'CourseController@courseform');
-Route::get('/updatecourse',             'CourseController@courseformupdate');
-Route::get('/deletecourse',             'CourseController@courseformdelete');
+        Route::get('/effectrecords',        'EffectRecordController@renderAll');
+        Route::post('/effectrecords',       'EffectRecordController@create');
+        Route::get('/effectrecords/{id}',   'EffectRecordController@renderOne');
+        Route::patch('/effectrecords',      'EffectRecordController@update');
+        Route::delete('/effectrecords',     'EffectRecordController@delete');
 
-Route::get('/nutrition',                'NutritionController@nutritionform');
-Route::post('/api/nutrition',           'NutritionController@save');
-Route::post('/api/nutritionupdate',     'NutritionController@update');
-Route::post('/api/nutritiondelete',     'NutritionController@delete');
+        Route::post('/appeals',             'AppealController@create');
+        Route::post('/comments',            'CommentController@create');
+        Route::delete('/comments/{id}',     'CommentController@delete');
+    }
+);
 
-Route::get('/practicerecord',               'PracticeRecordController@prform');
-Route::post('/api/practicerecord',          'PracticeRecordController@save');
-Route::post('/api/practicerecordupdate',    'PracticeRecordController@update');
-Route::post('/api/practicerecorddelete',    'PracticeRecordController@delete');
+Route::group(['namespace' => 'Trainer', 'prefix' => 'trainer'],
+    function () {
+        Route::get('/courses',              'CourseController@renderAll');
+        Route::post('/courses',             'CourseController@create');
+        Route::get('/courses/{id}',         'CourseController@renderOne');
+        Route::patch('/courses',            'CourseController@update');
+        Route::delete('/courses',           'CourseController@delete');
 
-Route::get('/effectrecord',                 'EffectRecordController@erform');
-Route::post('/api/effectrecord',            'EffectRecordController@save');
-Route::post('/api/effectrecordupdate',      'EffectRecordController@update');
-Route::post('/api/effectrecorddelete',      'EffectRecordController@delete');
+        Route::get('/nutritions',           'NutritionController@renderAll');
+        Route::post('/nutritions',          'NutritionController@create');
+        Route::get('/nutritions/{id}',      'NutritionController@renderOne');
+        Route::patch('/nutritions',         'NutritionController@update');
+        Route::delete('/nutritions',        'NutritionController@delete');
 
-Route::get('/appeal',               'AppealController@appealform');
-Route::get('/appeal_admin',         'AppealController@appealadmin');
-Route::post('/api/appeal',          'AppealController@save');
-Route::post('/api/appealupdate',    'AppealController@update');
-Route::post('/api/appealdelete',    'AppealController@delete');
+        Route::get('/practicerecords',      'PracticeRecordController@renderAll');
+        Route::get('/effectrecords',        'EffectRecordController@renderAll');
+    }
+);
 
-Route::get('/comment',              'CommentController@commentform');
-Route::get('/comment_admin',        'CommentController@commentadmin');
-Route::post('/api/comment',         'CommentController@save');
-Route::post('/api/commentupdete',   'CommentController@update');
-Route::post('/api/commentdelete',   'CommentController@delete');
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'],
+    function () {
+        Route::get('/users',                'UserController@renderAll');
+        Route::post('/users',               'UserController@create');
+        Route::get('/users/{id}',           'UserController@renderOne');
+        Route::patch('/users',              'UserController@update');
+        Route::delete('/users',             'UserController@delete');
+        
+        Route::get('/courses',              'CourseController@renderAll');
+        Route::post('/courses',             'CourseController@create');
+        Route::get('/courses/{id}',         'CourseController@renderOne');
+        Route::patch('/courses',            'CourseController@update');
+        Route::delete('/courses',           'CourseController@delete');
 
-Route::get('/posture',              'PostureController@postureform');
-Route::post('/api/posture',         'PostureController@save');
-Route::post('/api/postureupdate',   'PostureController@update');
-Route::post('/api/posturedelete',   'PostureController@delete');
+        Route::get('/appeals',              'AppealController@renderAll');
+        Route::delete('/appeals',           'AppealController@delete');
 
+        Route::get('/comments',             'CommentController@renderAll');
+        Route::delete('/comments',          'CommentController@delete');
 
-Route::get('/photo',          'PhotoController@photoform');
-Route::post('/api/photo',     'PhotoController@save');
+        Route::get('/postures',             'PostureController@renderAll');
+        Route::post('/postures',            'PostureController@create');
+        Route::get('/postures/{id}',        'PostureController@renderOne');
+        Route::patch('/postures',           'PostureController@update');
+        Route::delete('/postures',          'PostureController@delete');
 
-Route::get('/bmi',          'BmiController@bmiform');
-Route::get('/bmr',          'BmiController@bmrform');
-Route::post('/api/bmi',     'BmiController@bmi');
+        Route::get('/photos',               'PhotoController@renderAll');
+        Route::post('/photos',              'PhotoController@create');
+        Route::get('/photos/{id}',          'PhotoController@renderOne');
+        Route::patch('/photos',             'PhotoController@update');
+        Route::delete('/photos',            'PhotoController@delete');
 
-Route::get('/video',        'VideoController@videoform');
-Route::post('/api/video',   'VideoController@save');
+        Route::get('/videos',               'VideoController@renderAll');
+        Route::post('/videos',              'VideoController@create');
+        Route::get('/videos/{id}',          'VideoController@renderOne');
+        Route::patch('/videos',             'VideoController@update');
+        Route::delete('/videos',            'VideoController@delete');
+    }
+);

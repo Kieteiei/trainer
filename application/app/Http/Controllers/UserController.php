@@ -14,7 +14,7 @@ class UserController extends Controller
     }
     public function homefrom() 
     {
-        return view('home');
+        return view('page.public.home');
     }
     public function homeuser() 
     {
