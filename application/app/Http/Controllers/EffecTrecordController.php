@@ -9,7 +9,7 @@ use Core\File;
 
 use App\Models\EffectRrecord;
 
-class EffecTrecordController extends Controller 
+class EffectRecordController extends Controller 
 {
     
     public function save(Request $request) 
@@ -56,14 +56,14 @@ class EffecTrecordController extends Controller
         $effectrecord =new EffectRrecord();
         
         return $effectrecord;
-    public function erform()
-    {
-        $effectrecord =new EffectRrecord();
-        $effectrecord->all();
-
-        return view('effectrecord',[
-            'effectrecord'=>$effectrecord
-        ]);
     }
 
+    public function erform()
+    {
+        $effectrecords = EffectRrecord::all();
+
+        return view('effectrecord',[
+            'effectrecords' => $effectrecords
+        ]);
+    }
 }

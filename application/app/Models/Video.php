@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Video extends Model
 {
-  protected $table = 'linkvedeo';
-  protected $primaryKey = 'linkvedeoID';
+  protected $table = 'linkvideo';
+  protected $primaryKey = 'linkvideo_id';
 
   public function user()
   {
-    return $this->hasOne(new User(), 'userID');
+    return $this->hasOne(new User(), 'user_id');
   }
 }

@@ -13,5 +13,5 @@ class User extends Model
   use Notifiable;
   
   protected $table = 'user';
-  protected $primaryKey = 'userID';
+  protected $primaryKey = 'user_id';
 }

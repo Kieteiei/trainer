@@ -59,10 +59,10 @@ Route::post('/api/practicerecord',          'PracticeRecordController@save');
 Route::post('/api/practicerecordupdate',    'PracticeRecordController@update');
 Route::post('/api/practicerecorddelete',    'PracticeRecordController@delete');
 
-Route::get('/effectrecord',                 'EffecTrecordController@erform');
-Route::post('/api/effectrecord',            'EffecTrecordController@save');
-Route::post('/api/effectrecordupdate',      'EffecTrecordController@update');
-Route::post('/api/effectrecorddelete',      'EffecTrecordController@delete');
+Route::get('/effectrecord',                 'EffectRecordController@erform');
+Route::post('/api/effectrecord',            'EffectRecordController@save');
+Route::post('/api/effectrecordupdate',      'EffectRecordController@update');
+Route::post('/api/effectrecorddelete',      'EffectRecordController@delete');
 
 Route::get('/appeal',               'AppealController@appealform');
 Route::get('/appeal_admin',         'AppealController@appealadmin');
@@ -76,10 +76,10 @@ Route::post('/api/comment',         'CommentController@save');
 Route::post('/api/commentupdete',   'CommentController@update');
 Route::post('/api/commentdelete',   'CommentController@delete');
 
-Route::get('/posture',              'PostursController@postureform');
-Route::post('/api/posture',         'PostursController@save');
-Route::post('/api/postureupdate',   'PostursController@update');
-Route::post('/api/posturedelete',   'PostursController@delete');
+Route::get('/posture',              'PostureController@postureform');
+Route::post('/api/posture',         'PostureController@save');
+Route::post('/api/postureupdate',   'PostureController@update');
+Route::post('/api/posturedelete',   'PostureController@delete');
 
 
 Route::get('/photo',          'PhotoController@photoform');

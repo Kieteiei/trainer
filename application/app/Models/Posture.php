@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Posturs extends Model
+class Posture extends Model
 {
   protected $table = 'Posture';
-  protected $primaryKey = 'postureID';
+  protected $primaryKey = 'posture_id';
 
   public function user()
   {
-    return $this->hasOne(new User(), 'userID');
+    return $this->hasOne(new User(), 'user_id');
   }
 }

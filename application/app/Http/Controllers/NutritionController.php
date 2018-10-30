@@ -61,12 +61,14 @@ class NutritionController extends Controller
         
         return $nutrition;
     }
+
     public function nutritionform()
     {
-        $nutrition = new nutrition();
-        $nutrition->all();
+        $nutritions = Nutrition::all();
 
-        return view('nutrition',["nutrition"=>$nutrition]);
+        return view('nutrition', [
+            "nutritions" => $nutritions
+        ]);
     }
 
 }

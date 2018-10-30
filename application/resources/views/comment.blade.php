@@ -1,108 +1,81 @@
-<!DOCTYPE html5>
-<html>
-  <head>
-    <title> TrainerFreelance </title>
+@extends('layout.app-include')
 
-    <!-- meta tags -->
-    <meta charset="utf-8">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+@section('content')
 
-    <!-- set base route (pretty url) for angular.js -->
-    <base href="/">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- include css -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/form.css">
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
+        <div class="row">
+			<ol class="breadcrumb">
+				<li><a href="/">
+					<em class="fa fa-home"></em>
+				</a></li>
+				<li class="active">ความคิดเห็น</li>
+			</ol>
+		</div>
+        <h1>ความคิดเห็น</h1>
 
-</head>
-  <body>
-  <!-- top_ui -->
-    <div class="main">
-    <div class="topnav">
-      <a class="active" href="/">Home</a>
-      <a href="#news">News</a>
-      <a href="#contact">Contact</a>
-      <a href="#about">About</a>  
-      </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">ตารางข้อมูลความคิดเห็น</div>
+            <div class="panel-body">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>comment id</th>
+                            <th>comment type</th>
+                            <th>comment</th>
+                            <th>comment datetime</th>
+                            <th>user id</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    @foreach($comments as $i => $comment)
+                        <tr>
+                            <td class="text-center"> {{ ++$i }} </td>
+                            <td>{{ $comment->comment_id }}</td>
+                            <td>{{ $comment->comment_type }}</td>   
+                            <td>{{ $comment->comment }}</td>    
+                            <td>{{ $comment->comment_datetime }}</td>    
+                            <td>{{ $comment->user_id }}</td>
+                            <td class="text-center">  
+                                <a class="btn btn-warning" href="/api/update">Update</a>
+                                <a class="btn btn-danger" href="/api/Delete">Delete</a>
+                            </td>    
+                        </tr>
+                    @endforeach
+                </table>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">เพื่มข้อมูลแสดงความคิดเห็น</div>
+            <div class="panel-body">
+                <form action="api/course" method="post">
+                    @csrf
+
+                    <div class="form-group">
+                        <label>ประเภทความคิดเห็น</label>
+                        <input type="text" class="form-control" name="comment_type" > 
+                    </div>
+
+                    <div class="form-group">
+                        <label>ความคิดเห็น</label>
+                        <input type="text" class="form-control" name="comment" > 
+                    </div>
+
+                    <div class="form-group">
+                        <label>วัน/เดือน/ปี</label>
+                        <input type="date" class="form-control" name="comment_datetime" > 
+                    </div>
+
+                    <div class="form-group">
+                        <label>รหัสผู้เพิ่ม (Auto)</label>
+                        <input type="text" class="form-control" name="user_id" > 
+                    </div>
+                   
+                    <button type="submit" class="btn btn-primary" >เพิ่มข้อมูล</button>
+                </form>
+            </div> 
+        </div>
     </div>
-  <!-- manu -->
-  <div class="sidenav">
-  <h>TrainerFreelance</h>
-  <a href="course">คอร์ส</a>
-  <a href="nutrition">โภชนาการ</a>
-  <a href="practicerecord">บันทึกการฝึก</a>
-  <a href="effectrecord">บันทึกผลการฝึก</a>  
-  <a href="appeal"> ร้องเรียน </a>  
-  <a href="comment"> ความคิดเห็น </a> 
-  <a href="posture"> ท่าการออกกำลังกาย </a>
-  <a href="photo"> รูปการออกกำลังกาย </a>
-  <a href="video">วีดีโอการออกกำลังกาย  </a>
-  
-</div>
 
-<div class="main">
-
-<div class="datagrid">
-<h1>ความคิดเห็น</h1>
-<table >
-<tr><td>commentID</td><td>commentType</td><td>comment</td><td>commentDatetime</td><td>userID</td></tr>
-<?php foreach ($comment as $comments): ?>
- 
-<tr class="alt">
-  <td >
-  <?= $comments->commentID ?>
-  </td>
-
-  <td > 
-  <?= $comments->commentType ?> 
-  </td>   
-
-  <td >
-  <?= $comments->comment ?> 
-  </td>    
-
-  <td >
-  <?= $comments->commentDatetime ?> 
-  </td>    
-
-  <td > 
-  <?= $comments->userID ?>
-  </td>    
-
-   
-</tr>
-
-
-
-<?php endforeach; ?>
-</table>
-    <hr>
-
-</div>
-
-<!-- ================================================================ -->
-<form action="api/comment" method="POST">
-<h1>แสดงความคิดเห็น</h1><br>
-    <div> ประเภทความคิดเห็น </div> 
-    <div><input type="text" name="commentType"> </div> 
-    <div>ความคิดเห็น</div>    
-    <div><input type="text" name="comment"> </div>
-    <div>วัน/เดือน/ปี</div> 
-    <div><input type="text" name="commentDatetime"></div>
-    <div>รหัสผู้เพิ่ม (Auto)</div>
-    <div><input type="text" name="userID"> </div>
-    <button type="submit"  class="cancelbtn"  >Save</button>
-
-</form>
-    
-
-
-</div>
-
-    <!-- include js -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-  </body>
-</html>
+@endsection

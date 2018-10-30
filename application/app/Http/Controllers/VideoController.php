@@ -17,10 +17,10 @@ class VideoController extends Controller
     }
     public function videoform()
     {
-        $video =new Video();
-        $video->all();
-        return view('videolink',[
-            'video'=>$video
+        $videos = Video::all();
+
+        return view('video', [
+            'videos' => $videos
         ]);
     }
 

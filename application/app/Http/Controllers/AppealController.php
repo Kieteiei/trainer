@@ -52,18 +52,19 @@ class AppealController extends Controller
     }
     public function appealform()
     {
-        $appeal =new Appeal();
-        $appeal->all();
-        return view('appeal',[
-            'appeal'=>$appeal
+        $appeals = Appeal::all();
+
+        return view('appeal', [
+            'appeals' => $appeals
         ]);
     }
+
     public function appealadmin()
     {
-        $appeal =new Appeal();
-        $appeal->all();
+        $appeals = Appeal::all();
+
         return view('appeal_admin',[
-            'appeal'=>$appeal
+            'appeals' => $appeals
         ]);
     }
 

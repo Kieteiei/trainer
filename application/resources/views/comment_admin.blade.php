@@ -22,7 +22,7 @@
     <div class="main">
     <div class="topnav">
     <a href="logout">Logout</a>
-      <a href="/api/updateuser"> <?= $_SESSION ["UserName"] ?> </a>
+    
       <a class="active" href="/api/homeuser">Home</a>
 
 

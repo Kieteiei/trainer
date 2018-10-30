@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Photo extends Model
 {
   protected $table = 'Photo';
-  protected $primaryKey = 'photoID';
+  protected $primaryKey = 'photo_id';
 
   public function user()
   {
-    return $this->hasOne(new User(), 'userID');
+    return $this->hasOne(new User(), 'user_id');
   }
 }

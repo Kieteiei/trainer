@@ -1,7 +1,8 @@
 <?php 
 
-use Core\Controller;
-use Core\Request;
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
 
 use App\Models\Photo;
 
@@ -22,11 +23,10 @@ class PhotoController extends Controller
     
     public function photoform()
     {
-        $photo =new Photo();
-        $photo->all(); 
-        return view('photo',[
-            'photo'=>$photo
+        $photos = Photo::all();
+
+        return view('photo', [
+            'photos' => $photos
         ]);
     }
-
 }

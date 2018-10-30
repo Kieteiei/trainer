@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Posturs;
+use App\Models\Posture;
 
-class PostursController extends Controller 
+class PostureController extends Controller 
 {
     public function save(Request $request) 
     {
@@ -50,12 +50,13 @@ class PostursController extends Controller
         $posturs =new Posturs();
         return $posturs;
     }
+
     public function postureform()
     {
-        $posturs =new Posturs();
-        $posturs->all();
-        return view('posture',[
-            'posturs'=>$posturs
+        $postures = Posture::all();
+
+        return view('posture', [
+            'postures' => $postures
         ]);
     }
 

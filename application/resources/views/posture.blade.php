@@ -1,98 +1,74 @@
-<!DOCTYPE html5>
-<html>
-  <head>
-    <title> TrainerFreelance </title>
+@extends('layout.app-include')
 
-    <!-- meta tags -->
-    <meta charset="utf-8">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+@section('content')
 
-    <!-- set base route (pretty url) for angular.js -->
-    <base href="/">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- include css -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/form.css">
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
+        <div class="row">
+			<ol class="breadcrumb">
+				<li><a href="/">
+					<em class="fa fa-home"></em>
+				</a></li>
+				<li class="active">ท่าการออกกำลังกาย</li>
+			</ol>
+		</div>
+        <h1>ท่าการออกกำลังกาย</h1>
 
-</head>
-  <body>
-  <!-- top_ui -->
-    <div class="main">
-    <div class="topnav">
-    <a href="logout">Logout</a>
-      <a href="/api/updateuser"> <?= $_SESSION ["UserName"] ?> </a>
-      <a class="active" href="/api/homeuser">Home</a>
+        <div class="panel panel-default">
+            <div class="panel-heading">ตารางข้อมูลท่าการออกกำลังกาย</div>
+            <div class="panel-body">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>posture id</th>
+                            <th>posture name</th>
+                            <th>posture detail</th>
+                            <th>posture quote</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    @foreach($postures as $i => $posture)
+                        <tr>
+                            <td class="text-center"> {{ ++$i }} </td>
+                            <td>{{ $posture->posture_id }}</td>
+                            <td>{{ $posture->posture_name }}</td>   
+                            <td>{{ $posture->posture_detail }}</td>    
+                            <td>{{ $posture->posture_quote }}</td>    
+                            <td class="text-center">  
+                                <a class="btn btn-warning" href="/api/update">Update</a>
+                                <a class="btn btn-danger" href="/api/Delete">Delete</a>
+                            </td>    
+                        </tr>
+                    @endforeach
+                </table>
+            </div>
+        </div>
 
+        <div class="panel panel-default">
+            <div class="panel-heading">เพื่มข้อมูลท่าการออกกำลังกาย</div>
+            <div class="panel-body">
+                <form action="api/posture" method="post">
+                    @csrf
 
-      </div>
+                    <div class="form-group">
+                        <label>ชื่อท่าการออกกำลังกาย</label>
+                        <input type="text" class="form-control" name="posture_name" > 
+                    </div>
+
+                    <div class="form-group">
+                        <label>รายละเอียดท่าการออกำลังกาย</label>
+                        <input type="text" class="form-control" name="posture_detail" > 
+                    </div>
+
+                    <div class="form-group">
+                        <label>ที่มาข้อมูล</label>
+                        <input type="date" class="form-control" name="posture_quote" > 
+                    </div>
+                   
+                    <button type="submit" class="btn btn-primary" >เพิ่มข้อมูล</button>
+                </form>
+            </div> 
+        </div>
     </div>
-  <!-- manu -->
-  <div class="sidenav">
-  <h>TrainerFreelance</h>
-  <a href="/api/homeadmin"> ผู้ใช้งานระบบ </a>
-  <a href="appeal_admin"> ร้องเรียน </a>
-  <a href="comment_admin"> ความคิดเห็น </a>
-  <a href="posture"> ท่าการออกกำลังกาย </a>
-  <a href="photo"> รูปการออกกำลังกาย </a>
-  <a href="video">วีดีโอการออกกำลังกาย  </a>
-  
-</div>
 
-<div class="main">
-<div class="datagrid">
-<h1>ท่าการออกกำลังกาย</h1>
-<table >
-<tr><td>postureID</td><td>postureName</td><td>postureDetail</td><td>postureQuote</td></tr>
-<?php foreach ( $posturs as $posturss): ?>
- 
-<tr class="alt">
-  <td >
-  <?= $posturss->postureID ?>
-  </td>
-
-  <td > 
-  <?= $posturss->postureName ?> 
-  </td>   
-
-  <td >
-  <?= $posturss->postureDetail ?> 
-  </td>    
-
-  <td >
-  <?= $posturss->postureQuote ?> 
-  </td>   
-
-   
-</tr>
-
-
-
-<?php endforeach; ?>
-</table>
-    <hr>
-
-</div>
-  <!-- *************************************************************** -->
-<form action="api/posture" method="POST">
-<br>
-    <div> ชื่อท่าการออกำลังกาย </div> 
-    <div><input type="text" name="postureName"> </div> 
-    <div>รายละเอียดท่าการออกำลังกาย</div>    
-    <div><input type="text" name="postureDetail"> </div>
-    <div>ที่มาข้อมูล</div> 
-    <div><input type="text" name="postureQuote"></div>
-    <button type="submit"  class="cancelbtn"  >Save</button>
-</form>
-    
-    
-
-
-</div>
-
-    <!-- include js -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-  </body>
-</html>
+@endsection

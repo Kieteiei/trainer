@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Nutrition extends Model
 {
   protected $table = 'Nutrition';
-  protected $primaryKey = 'nutritionID';
+  protected $primaryKey = 'nutrition_id';
 
   public function user()
   {
-    return $this->hasOne(new User(), 'userID');
+    return $this->hasOne(new User(), 'user_id');
   }
 }

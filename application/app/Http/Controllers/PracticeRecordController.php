@@ -49,10 +49,10 @@ class PracticeRecordController extends Controller
     }
     public function prform()
     {
-        $practicerecord =new PracticeRecord();
-        $practicerecord->all();
+        $practicerecords = PracticeRecord::all();
+
         return view('practicerecord',[
-            'practicerecord'=>$practicerecord
+            'practicerecords' => $practicerecords
         ]);
     }
 

@@ -49,7 +49,9 @@
         <div class="panel panel-default">
             <div class="panel-heading">เพื่มข้อมูลคอร์ส</div>
             <div class="panel-body">
-                <form action="api/course" method="POST">
+                <form action="api/course" method="post">
+                    @csrf
+
                     <div class="form-group">
                         <label>ชื่อคอร์ส</label>
                         <input type="text" class="form-control" name="course_name" > 
@@ -61,7 +63,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>วันเ/ดือน/ปี</label>
+                        <label>วัน/เดือน/ปี</label>
                         <input type="date" class="form-control" name="course_datetime" > 
                     </div>
 

@@ -50,18 +50,18 @@ class CommentController extends Controller
     }
     public function commentform()
     {
-        $comment =new Comment();
-        $comment->all();
+        $comments = Comment::all();
+    
         return view('comment',[
-            'comment'=>$comment
+            'comments' => $comments
         ]);
     }
     public function commentadmin()
     {
-        $comment =new Comment();
-        $comment->all();
+        $comments = Comment::all();
+
         return view('comment_admin',[
-            'comment'=>$comment
+            'comment' => $comments
         ]);
     }
 

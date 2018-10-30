@@ -1,107 +1,81 @@
-<!DOCTYPE html5>
-<html>
-  <head>
-    <title> TrainerFreelance </title>
+@extends('layout.app-include')
 
-    <!-- meta tags -->
-    <meta charset="utf-8">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+@section('content')
 
-    <!-- set base route (pretty url) for angular.js -->
-    <base href="/">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- include css -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/form.css">
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
+        <div class="row">
+			<ol class="breadcrumb">
+				<li><a href="/">
+					<em class="fa fa-home"></em>
+				</a></li>
+				<li class="active">ร้องเรียน</li>
+			</ol>
+		</div>
+        <h1>ร้องเรียน</h1>
 
-</head>
-  <body>
-  <!-- top_ui -->
-    <div class="main">
-    <div class="topnav">
-      <a class="active" href="/">Home</a>
-      <a href="#news">News</a>
-      <a href="#contact">Contact</a>
-      <a href="#about">About</a>  
-      </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">ตารางข้อมูลร้องเรียน</div>
+            <div class="panel-body">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>appeal id</th>
+                            <th>appeal type</th>
+                            <th>appeal detail</th>
+                            <th>appeal status</th>
+                            <th>user id</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    @foreach($appeals as $i => $appeal)
+                        <tr>
+                            <td class="text-center"> {{ ++$i }} </td>
+                            <td>{{ $appeal->appeal_id }}</td>
+                            <td>{{ $appeal->appeal_type }}</td>   
+                            <td>{{ $appeal->appeal_detail }}</td>    
+                            <td>{{ $appeal->appeal_status }}</td>    
+                            <td>{{ $appeal->user_id }}</td>
+                            <td class="text-center">  
+                                <a class="btn btn-warning" href="/api/update">Update</a>
+                                <a class="btn btn-danger" href="/api/Delete">Delete</a>
+                            </td>    
+                        </tr>
+                    @endforeach
+                </table>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">เพื่มข้อมูลร้องเรียน</div>
+            <div class="panel-body">
+                <form action="api/course" method="post">
+                    @csrf
+
+                    <div class="form-group">
+                        <label>ประเภทการร้องเรียน</label>
+                        <input type="text" class="form-control" name="appeal_type" > 
+                    </div>
+
+                    <div class="form-group">
+                        <label>รายละเอียดการร้องเรียน</label>
+                        <input type="text" class="form-control" name="appeal_detail" > 
+                    </div>
+
+                    <div class="form-group">
+                        <label>สถานะการร้องเรียน</label>
+                        <input type="text" class="form-control" name="appeal_status" > 
+                    </div>
+
+                    <div class="form-group">
+                        <label>รหัสผู้เพิ่ม (Auto)</label>
+                        <input type="text" class="form-control" name="user_id" > 
+                    </div>
+                   
+                    <button type="submit" class="btn btn-primary" >เพิ่มข้อมูล</button>
+                </form>
+            </div> 
+        </div>
     </div>
-  <!-- manu -->
-  <div class="sidenav">
-  <h>TrainerFreelance</h>
-  <a href="course">คอร์ส</a>
-  <a href="nutrition">โภชนาการ</a>
-  <a href="practicerecord">บันทึกการฝึก</a>
-  <a href="effectrecord">บันทึกผลการฝึก</a>  
-  <a href="appeal"> ร้องเรียน </a>  
-  <a href="comment"> ความคิดเห็น </a> 
-  <a href="posture"> ท่าการออกกำลังกาย </a>
-  <a href="photo"> รูปการออกกำลังกาย </a>
-  <a href="video">วีดีโอการออกกำลังกาย  </a>
-  
-</div>
 
-<div class="main">
-<div class="datagrid">
-<h1>ร้องเรียน</h1>
-<table >
-<tr><td>appealID</td><td>appealType</td><td>appealDetail</td><td>appealStatus</td><td>userID</td></tr>
-<?php foreach ($appeal as $appeals): ?>
- 
-<tr class="alt">
-  <td >
-  <?= $appeals->appealID ?>
-  </td>
-
-  <td > 
-  <?= $appeals->appealType ?> 
-  </td>   
-
-  <td >
-  <?= $appeals->appealDetail ?> 
-  </td>    
-
-  <td >
-  <?= $appeals->appealStatus ?> 
-  </td>    
-
-  <td > 
-  <?= $appeals->userID ?>
-  </td>    
-
-   
-</tr>
-
-
-
-<?php endforeach; ?>
-</table>
-    <hr>
-
-</div>
-
-
-<!-- *************************************************************************** -->
-<form action="api/appeal" method="POST">
-<br>
-    <div> ประเภทการร้องเรียน </div> 
-    <div><input type="text" name="appealType"> </div> 
-    <div>รายละเอียดการร้องเรียน</div>    
-    <div><input type="text" name="appealDetail"> </div>
-    <div>สถานะการร้องเรียน</div> 
-    <div><input type="text" name="appealStatus"></div>
-    <div>รหัสผู้เพิ่ม (Auto)</div>
-    <div><input type="text" name="userID"> </div>
-    <button type="submit"  class="cancelbtn"  >Save</button>
-</form>
-    
-
-
-</div>
-
-    <!-- include js -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-  </body>
-</html>
+@endsection

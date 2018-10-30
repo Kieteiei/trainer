@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class PracticeRecord extends Model
 {
   protected $table = 'PracticeRecord';
-  protected $primaryKey = 'prID';
+  protected $primaryKey = 'practicerecord_id';
 
   public function user()
   {
-    return $this->hasOne(new User(), 'userID');
+    return $this->hasOne(new User(), 'user_id');
   }
 }
