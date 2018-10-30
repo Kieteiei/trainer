@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
+     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
         <div class="row">
 			<ol class="breadcrumb">
 				<li><a href="/">
@@ -11,70 +11,42 @@
 				<li class="active">คอร์ส</li>
 			</ol>
 		</div>
-        <h1>คอร์ส</h1>
+        <br>
 
         <div class="panel panel-default">
-            <div class="panel-heading">ตารางข้อมูลคอร์ส</div>
             <div class="panel-body">
-                <table class="table table-bordered table-striped table-hover">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>#</th>
-                            <th>course id</th>
-                            <th>course name</th>
-                            <th>activity</th>
-                            <th>course datetime</th>
-                            <th>user id</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    @foreach($courses as $i => $course)
-                        <tr>
-                            <td class="text-center"> {{ ++$i }} </td>
-                            <td>{{ $course->course_id }}</td>
-                            <td>{{ $course->course_name }}</td>   
-                            <td>{{ $course->activity }}</td>    
-                            <td>{{ $course->course_datetime }}</td>    
-                            <td>{{ $course->user_id }}</td>
-                            <td class="text-center">  
-                                <a class="btn btn-warning" href="/api/update">Update</a>
-                                <a class="btn btn-danger" href="/api/Delete">Delete</a>
-                            </td>    
-                        </tr>
-                    @endforeach
-                </table>
+                <div class="row">
+
+                    <div class="col-xs-4">
+                        <div class="example-1 card course-card">
+                            <div class="wrapper">
+                                <div class="date">
+                                    <span class="day">12</span>
+                                    <span class="month">Aug</span>
+                                    <span class="year">2016</span>
+                                </div>
+                                <div class="data">
+                                    <div class="content">
+                                        <span class="author">Jane Doe</span>
+                                        <h1 class="title"><a href="#">Boxing icon has the will for a couple more fights</a></h1>
+                                        <p class="text">The highly anticipated world championship fight will take place at 10am and is the second major boxing blockbuster in the nation after 43 years.</p>
+                                        <label for="show-menu" class="menu-button"><span></span></label>
+                                    </div>
+                                    <input type="checkbox" id="show-menu" />
+                                    <ul class="menu-content">
+                                        <li>
+                                            <a href="#" class="fa fa-bookmark-o"></a>
+                                        </li>
+                                        <li><a href="#" class="fa fa-heart-o"><span>47</span></a></li>
+                                        <li><a href="#" class="fa fa-comment-o"><span>8</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
-        </div>
-
-        <div class="panel panel-default">
-            <div class="panel-heading">เพื่มข้อมูลคอร์ส</div>
-            <div class="panel-body">
-                <form action="api/course" method="post">
-                    @csrf
-
-                    <div class="form-group">
-                        <label>ชื่อคอร์ส</label>
-                        <input type="text" class="form-control" name="course_name" > 
-                    </div>
-
-                    <div class="form-group">
-                        <label>กิจกรรม</label>
-                        <input type="text" class="form-control" name="activity" > 
-                    </div>
-
-                    <div class="form-group">
-                        <label>วัน/เดือน/ปี</label>
-                        <input type="date" class="form-control" name="course_datetime" > 
-                    </div>
-
-                    <div class="form-group">
-                        <label>รหัสผู้เพิ่ม (Auto)</label>
-                        <input type="text" class="form-control" name="user_id" > 
-                    </div>
-                   
-                    <button type="submit" class="btn btn-primary" >เพิ่มข้อมูล</button>
-                </form>
-            </div> 
         </div>
     </div>
 

@@ -3,21 +3,21 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="#"><span>Lumino</span>Admin</a>
             <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
-                    <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" data-toggle="modal" data-target="#register-modal">Register</a>
-                </li>
-                <li class="dropdown">
-                    <a href="/logout">Logout</a>
-                </li class="dropdown">
-                <li class="dropdown">
-                    <a href="/api/updateuser">{{ Session::get("UserName", 'dummy_username') }} </a>
-                </li>
-                <li class="dropdown">
-                    <a class="active" href="/api/hometrainer">Home</a>
-                </li>
+                @if (Session::has('auth_user'))
+                    <li class="dropdown">
+                        <form id="form-logout" action="/auth/logout" method="post">
+                            @csrf
+                        </form>
+                        <a href="#" onclick="document.getElementById('form-logout').submit();"> Logout </a>
+                    </li class="dropdown">
+                @else
+                    <li class="dropdown">
+                        <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="modal" data-target="#register-modal">Register</a>
+                    </li>
+                @endif
             </ul>
         </div>
     </div>

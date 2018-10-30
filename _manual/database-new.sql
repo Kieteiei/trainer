@@ -1,3 +1,5 @@
+
+
 -- phpMyAdmin SQL Dump
 -- version 4.8.1
 -- https://www.phpmyadmin.net/
@@ -11,7 +13,6 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,6 +28,14 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `accountpayment`
 --
+
+CREATE TABLE `trainings` (
+  `training_id` int(4) NOT NULL,
+  `status` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `start_at` date DEFAULT NULL,
+  `stop_at` date DEFAULT NULL,
+  `user_id` int(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `accountpayment` (
   `account_id` int(4) NOT NULL,

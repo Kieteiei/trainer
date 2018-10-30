@@ -31,4 +31,12 @@ class AuthController extends Controller
 
         return redirect()->back();
     }
+
+    public function logout(Request $request)
+    {
+        Session::forget('auth_user');
+        Session::forget('auth_type');
+
+        return redirect('/');
+    }
 }

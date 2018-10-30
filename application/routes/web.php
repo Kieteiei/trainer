@@ -20,15 +20,18 @@ Route::get('/page/bmi',     'PageController@renderBmi');
 Route::post('/page/bmi',    'PageController@renderCalBmi');
 Route::get('/page/bmr',     'PageController@renderBmr');
 
-Route::post('/auth/login',  'AuthController@login');
+Route::post('/auth/login',      'AuthController@login');
+Route::post('/auth/logout',     'AuthController@logout');
 
 Route::group(['namespace' => 'User', 'prefix' => 'user'],
     function () {
         Route::get('/courses',              'CourseController@renderAll');
-        Route::post('/courses',             'CourseController@create');
         Route::get('/courses/{id}',         'CourseController@renderOne');
-        Route::patch('/courses',            'CourseController@update');
-        Route::delete('/courses',           'CourseController@delete');
+
+        Route::get('/trainings',            'TrainingController@renderAll');
+        Route::post('/trainings',           'TrainingController@create');
+        Route::get('/trainings/{id}',       'TrainingController@renderOne');
+        Route::patch('/trainings',          'TrainingController@update');
 
         Route::get('/nutritions',           'NutritionController@renderAll');
 
@@ -52,6 +55,12 @@ Route::group(['namespace' => 'User', 'prefix' => 'user'],
 
 Route::group(['namespace' => 'Trainer', 'prefix' => 'trainer'],
     function () {
+        Route::get('/trainings',            'TrainingController@renderAll');
+        Route::post('/trainings',           'TrainingController@create');
+        Route::get('/trainings/{id}',       'TrainingController@renderOne');
+        Route::patch('/trainings',          'TrainingController@update');
+        Route::delete('/trainings',         'TrainingController@delete');
+
         Route::get('/courses',              'CourseController@renderAll');
         Route::post('/courses',             'CourseController@create');
         Route::get('/courses/{id}',         'CourseController@renderOne');
@@ -71,6 +80,12 @@ Route::group(['namespace' => 'Trainer', 'prefix' => 'trainer'],
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'],
     function () {
+        Route::get('/trainings',            'TrainingController@renderAll');
+        Route::post('/trainings',           'TrainingController@create');
+        Route::get('/trainings/{id}',       'TrainingController@renderOne');
+        Route::patch('/trainings',          'TrainingController@update');
+        Route::delete('/trainings',         'TrainingController@delete');
+
         Route::get('/users',                'UserController@renderAll');
         Route::post('/users',               'UserController@create');
         Route::get('/users/{id}',           'UserController@renderOne');
