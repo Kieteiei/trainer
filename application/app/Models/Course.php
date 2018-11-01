@@ -6,11 +6,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
-  protected $table = 'Course';
-  protected $primaryKey = 'course_id';
+    protected $table = 'Course';
+    protected $primaryKey = 'course_id';
 
-  public function user()
-  {
-    return $this->hasOne(new User(), 'user_id');
-  }
+    public function user()
+    {
+        return $this->hasOne(new User(), 'user_id');
+    }
+
+    public static function _create($createArray)
+    {
+        $model = new Static;
+
+        foreach($createArray as $field => $value)
+        {
+            $model->$field = $value;
+        }
+
+        $model->save();
+
+        return $model;
+    }
 }

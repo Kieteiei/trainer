@@ -34,7 +34,10 @@ CREATE TABLE `trainings` (
   `status` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
   `start_at` date DEFAULT NULL,
   `stop_at` date DEFAULT NULL,
-  `user_id` int(4) DEFAULT NULL
+  `user_id` int(4) DEFAULT NULL,
+
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `accountpayment` (
@@ -43,7 +46,10 @@ CREATE TABLE `accountpayment` (
   `account_name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `bank` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `account_type` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `brance` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL
+  `brance` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -57,7 +63,10 @@ CREATE TABLE `appeal` (
   `appeal_type` int(40) DEFAULT NULL,
   `appeal_detail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `appeal_status` tinyint(1) DEFAULT NULL,
-  `user_id` int(4) DEFAULT NULL
+  `user_id` int(4) DEFAULT NULL,
+
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -81,7 +90,10 @@ CREATE TABLE `coaching` (
   `practicerecord_id` int(4) NOT NULL,
   `effectrecord_id` int(4) NOT NULL,
   `payment_id` int(4) NOT NULL,
-  `coaching_datetime` date DEFAULT NULL
+  `coaching_datetime` date DEFAULT NULL,
+
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -95,7 +107,10 @@ CREATE TABLE `comment` (
   `comment_type` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
   `comment` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `comment_datetime` date DEFAULT NULL,
-  `user_id` int(4) DEFAULT NULL
+  `user_id` int(4) DEFAULT NULL,
+
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -117,7 +132,11 @@ CREATE TABLE `course` (
   `course_name` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `activity` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `course_datetime` date DEFAULT NULL,
-  `user_id` int(4) DEFAULT NULL
+  `img_path` varchar(100) NULL,
+  `user_id` int(4) DEFAULT NULL,
+
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -145,7 +164,10 @@ CREATE TABLE `effectrecord` (
   `weight` varchar(3) COLLATE utf8_unicode_ci DEFAULT NULL,
   `height` varchar(3) COLLATE utf8_unicode_ci DEFAULT NULL,
   `effectrecord_datetime` date DEFAULT NULL,
-  `user_id` int(4) DEFAULT NULL
+  `user_id` int(4) DEFAULT NULL,
+
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -157,7 +179,10 @@ CREATE TABLE `effectrecord` (
 CREATE TABLE `linkvideo` (
   `linkvideo_id` int(4) NOT NULL,
   `video_name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `video_detail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+  `video_detail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -171,7 +196,10 @@ CREATE TABLE `nutrition` (
   `nutrition_name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `nutrition_detail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `nutrition_quote` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user_id` int(4) DEFAULT NULL
+  `user_id` int(4) DEFAULT NULL,
+
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -193,7 +221,10 @@ CREATE TABLE `payment` (
   `payment_status` tinyint(4) DEFAULT NULL,
   `payment_date` date DEFAULT NULL,
   `account_id` int(4) DEFAULT NULL,
-  `user_id` int(4) DEFAULT NULL
+  `user_id` int(4) DEFAULT NULL,
+
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -206,7 +237,10 @@ CREATE TABLE `photo` (
   `photo_id` int(4) NOT NULL,
   `photo_name` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `location_detail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `photo_quote` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+  `photo_quote` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -219,7 +253,10 @@ CREATE TABLE `posture` (
   `posture_id` int(4) NOT NULL,
   `posture_name` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `posture_detail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `posture_quote` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+  `posture_quote` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -242,7 +279,10 @@ CREATE TABLE `practicerecord` (
   `practicerecord_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `practicerecord_detail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `practicerecord_datetime` date DEFAULT NULL,
-  `user_id` int(4) DEFAULT NULL
+  `user_id` int(4) DEFAULT NULL,
+
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -262,7 +302,10 @@ CREATE TABLE `recommend` (
   `recommend_id` int(4) NOT NULL,
   `posture_id` int(4) DEFAULT NULL,
   `photo_id` int(4) DEFAULT NULL,
-  `linkvideo_id` int(4) DEFAULT NULL
+  `linkvideo_id` int(4) DEFAULT NULL,
+
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -275,7 +318,10 @@ CREATE TABLE `tabletraining` (
   `tabletraining_id` int(4) NOT NULL,
   `course_id` int(4) DEFAULT NULL,
   `effectrecord_datetime` int(4) DEFAULT NULL,
-  `user_id` int(4) DEFAULT NULL
+  `user_id` int(4) DEFAULT NULL,
+
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -297,7 +343,10 @@ CREATE TABLE `user` (
   `height` varchar(3) COLLATE utf8_unicode_ci DEFAULT NULL,
   `facebook_id` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `line_id` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user_type` varchar(10) COLLATE utf8_unicode_ci NOT NULL
+  `user_type` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -306,9 +355,9 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `user_name`, `password`, `id_card`, `address`, `birthday`, `email`, `phone_number`, `weight`, `height`, `facebook_id`, `line_id`, `user_type`) VALUES
 (2, 'admin', '1234', NULL, NULL, NULL, 'kietzaza@gmail.com', NULL, NULL, NULL, NULL, NULL, 'ADMIN'),
-(3, 'tesuser', '1234', NULL, NULL, NULL, 'tangk1995@gmail.com', NULL, NULL, NULL, NULL, NULL, 'USER'),
+(3, 'user', '1234', NULL, NULL, NULL, 'tangk1995@gmail.com', NULL, NULL, NULL, NULL, NULL, 'USER'),
 (4, 'kietzaza', '1234', NULL, NULL, NULL, 'tangk1995@gmail.com', NULL, NULL, NULL, NULL, NULL, 'ADMIN'),
-(5, 'Trainer', '1234', NULL, NULL, NULL, 'asdasd@asd.com', NULL, NULL, NULL, NULL, NULL, 'TRAINER');
+(5, 'trainer', '1234', NULL, NULL, NULL, 'asdasd@asd.com', NULL, NULL, NULL, NULL, NULL, 'TRAINER');
 
 --
 -- Indexes for dumped tables

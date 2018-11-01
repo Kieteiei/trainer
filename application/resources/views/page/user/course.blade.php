@@ -17,7 +17,7 @@
             <div class="panel-body">
                 <div class="row">
 
-                    <div class="col-xs-4">
+                    <div class="col-md-6 col-lg-4">
                         <div class="example-1 card course-card">
                             <div class="wrapper">
                                 <div class="date">

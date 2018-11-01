@@ -10,6 +10,21 @@
             crossorigin="anonymous"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+        <script src="https://cdn.ckeditor.com/ckeditor5/10.1.0/classic/ckeditor.js"></script>
+
+        <script>
+            ClassicEditor
+            .create( document.querySelector( 'textarea' ), {
+                toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'undo', 'redo' ],
+            })
+            .then( editor => {
+                console.log( editor );
+            })
+            .catch( error => {
+                console.error( error );
+            });
+        </script>
             
         <script src="/js/custom.js"></script>
 

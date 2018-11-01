@@ -196,6 +196,7 @@ form{
   float: left;
   padding: 0 1.7rem;
   width: 100%;
+  margin-bottom: 25px;
 }
 .course-card .menu-content {
   margin: 0;
@@ -229,7 +230,7 @@ form{
   min-height: 540px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25), 0 5px 4px rgba(0, 0, 0, 0.15);
 }
 .course-card .wrapper:hover .data {
   transform: translateY(0);
@@ -354,4 +355,8 @@ form{
 }
 .example-1 .menu-content span {
   top: -10px;
+}
+
+.ck-content {
+  min-height: 200px;
 }
