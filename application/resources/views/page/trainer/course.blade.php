@@ -22,7 +22,6 @@
                             <th>#</th>
                             <th>course id</th>
                             <th>course name</th>
-                            <th>activity</th>
                             <th>course datetime</th>
                             <th></th>
                         </tr>
@@ -31,13 +30,18 @@
                         <tr>
                             <td class="text-center"> {{ ++$i }} </td>
                             <td>{{ $course->course_id }}</td>
-                            <td>{{ $course->course_name }}</td>   
-                            <td>{!! $course->activity !!}</td>    
-                            <td>{{ $course->created_at }}</td>    
-                            <td class="text-center">  
-                                <a class="btn btn-warning" href="/api/update">Update</a>
-                                <a class="btn btn-danger" href="/api/Delete">Delete</a>
-                            </td>    
+                            <td>{{ $course->course_name }}</td>
+                            <td>{{ $course->created_at }}</td>
+                            <td class="text-center">
+                                <a class="btn btn-block btn-warning" href="/trainer/courses/{{ $course->course_id }}">Update</a>
+
+                                <form action="/trainer/courses/{{ $course->course_id }}" method="post">
+                                    {{ method_field('DELETE') }}
+                                    @csrf
+
+                                    <button type="submit" class="btn btn-block btn-danger">Delete</button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </table>
@@ -45,31 +49,31 @@
         </div>
 
         <div class="panel panel-default">
-            <div class="panel-heading">คอร์ส</div>
+            <div class="panel-heading">เพิ่มคอร์ส</div>
             <div class="panel-body">
                 <form action="/trainer/courses" method="post" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group">
                         <label>ชื่อคอร์ส</label>
-                        <input type="text" class="form-control" name="course_name" required> 
+                        <input type="text" class="form-control" name="course_name" required>
                     </div>
 
                     <div class="form-group">
                         <label>กิจกรรม</label>
-                        <textarea type="text" class="form-control" name="activity"></textarea> 
+                        <textarea type="text" class="form-control" name="activity"></textarea>
                     </div>
 
                     <div class="form-group">
                         <label>รูปภาพ</label>
-                        <input type="file" class="form-control" name="photo" required> 
+                        <input type="file" class="form-control" name="photo" required>
                     </div>
-                   
+
                     <button type="submit" class="btn btn-primary">เพิ่มข้อมูล</button>
                 </form>
-            </div> 
+            </div>
         </div>
     </div>
-    
+
 
 @endsection

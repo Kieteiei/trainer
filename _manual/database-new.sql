@@ -30,18 +30,18 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `trainings` (
-  `training_id` int(4) NOT NULL,
+  `training_id` int(4) NOT NULL AUTO_INCREMENT,
   `status` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
   `start_at` date DEFAULT NULL,
   `stop_at` date DEFAULT NULL,
-  `user_id` int(4) DEFAULT NULL,
+  `user_id` int(4) DEFAULT NOT NULL,
 
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `accountpayment` (
-  `account_id` int(4) NOT NULL,
+  `account_id` int(4) NOT NULL AUTO_INCREMENT,
   `account_number` int(20) NOT NULL,
   `account_name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `bank` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
@@ -59,7 +59,7 @@ CREATE TABLE `accountpayment` (
 --
 
 CREATE TABLE `appeal` (
-  `appeal_id` int(4) NOT NULL,
+  `appeal_id` int(4) NOT NULL AUTO_INCREMENT,
   `appeal_type` int(40) DEFAULT NULL,
   `appeal_detail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `appeal_status` tinyint(1) DEFAULT NULL,
@@ -84,7 +84,7 @@ INSERT INTO `appeal` (`appeal_id`, `appeal_type`, `appeal_detail`, `appeal_statu
 --
 
 CREATE TABLE `coaching` (
-  `coaching_id` int(4) NOT NULL,
+  `coaching_id` int(4) NOT NULL AUTO_INCREMENT,
   `user_id` int(4) NOT NULL,
   `course_id` int(4) NOT NULL,
   `practicerecord_id` int(4) NOT NULL,
@@ -103,7 +103,7 @@ CREATE TABLE `coaching` (
 --
 
 CREATE TABLE `comment` (
-  `comment_id` int(4) NOT NULL,
+  `comment_id` int(4) NOT NULL AUTO_INCREMENT,
   `comment_type` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
   `comment` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `comment_datetime` date DEFAULT NULL,
@@ -128,7 +128,7 @@ INSERT INTO `comment` (`comment_id`, `comment_type`, `comment`, `comment_datetim
 --
 
 CREATE TABLE `course` (
-  `course_id` int(4) NOT NULL,
+  `course_id` int(4) NOT NULL AUTO_INCREMENT,
   `course_name` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `activity` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `course_datetime` date DEFAULT NULL,
@@ -158,13 +158,13 @@ INSERT INTO `course` (`course_id`, `course_name`, `activity`, `course_datetime`,
 --
 
 CREATE TABLE `effectrecord` (
-  `effectrecord_id` int(4) NOT NULL,
-  `practicerecord_id` int(4) DEFAULT NULL,
+  `effectrecord_id` int(4) NOT NULL AUTO_INCREMENT,
   `effect` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `weight` varchar(3) COLLATE utf8_unicode_ci DEFAULT NULL,
   `height` varchar(3) COLLATE utf8_unicode_ci DEFAULT NULL,
   `effectrecord_datetime` date DEFAULT NULL,
-  `user_id` int(4) DEFAULT NULL,
+
+  `practicerecord_id` int(4) DEFAULT NULL,
 
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
@@ -177,7 +177,7 @@ CREATE TABLE `effectrecord` (
 --
 
 CREATE TABLE `linkvideo` (
-  `linkvideo_id` int(4) NOT NULL,
+  `linkvideo_id` int(4) NOT NULL AUTO_INCREMENT,
   `video_name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `video_detail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
 
@@ -192,7 +192,7 @@ CREATE TABLE `linkvideo` (
 --
 
 CREATE TABLE `nutrition` (
-  `nutrition_id` int(4) NOT NULL,
+  `nutrition_id` int(4) NOT NULL AUTO_INCREMENT,
   `nutrition_name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `nutrition_detail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `nutrition_quote` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -216,7 +216,7 @@ INSERT INTO `nutrition` (`nutrition_id`, `nutrition_name`, `nutrition_detail`, `
 --
 
 CREATE TABLE `payment` (
-  `payment_id` int(4) NOT NULL,
+  `payment_id` int(4) NOT NULL AUTO_INCREMENT,
   `amount` double DEFAULT NULL,
   `payment_status` tinyint(4) DEFAULT NULL,
   `payment_date` date DEFAULT NULL,
@@ -234,7 +234,7 @@ CREATE TABLE `payment` (
 --
 
 CREATE TABLE `photo` (
-  `photo_id` int(4) NOT NULL,
+  `photo_id` int(4) NOT NULL AUTO_INCREMENT,
   `photo_name` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `location_detail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `photo_quote` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -250,7 +250,7 @@ CREATE TABLE `photo` (
 --
 
 CREATE TABLE `posture` (
-  `posture_id` int(4) NOT NULL,
+  `posture_id` int(4) NOT NULL AUTO_INCREMENT,
   `posture_name` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `posture_detail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `posture_quote` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -275,11 +275,12 @@ INSERT INTO `posture` (`posture_id`, `posture_name`, `posture_detail`, `posture_
 --
 
 CREATE TABLE `practicerecord` (
-  `practicerecord_id` int(4) NOT NULL,
+  `practicerecord_id` int(4) NOT NULL AUTO_INCREMENT,
   `practicerecord_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `practicerecord_detail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `practicerecord_datetime` date DEFAULT NULL,
-  `user_id` int(4) DEFAULT NULL,
+
+  `training_id` int(4) DEFAULT NULL,
 
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
@@ -299,7 +300,7 @@ INSERT INTO `practicerecord` (`practicerecord_id`, `practicerecord_name`, `pract
 --
 
 CREATE TABLE `recommend` (
-  `recommend_id` int(4) NOT NULL,
+  `recommend_id` int(4) NOT NULL AUTO_INCREMENT,
   `posture_id` int(4) DEFAULT NULL,
   `photo_id` int(4) DEFAULT NULL,
   `linkvideo_id` int(4) DEFAULT NULL,
@@ -315,7 +316,7 @@ CREATE TABLE `recommend` (
 --
 
 CREATE TABLE `tabletraining` (
-  `tabletraining_id` int(4) NOT NULL,
+  `tabletraining_id` int(4) NOT NULL AUTO_INCREMENT,
   `course_id` int(4) DEFAULT NULL,
   `effectrecord_datetime` int(4) DEFAULT NULL,
   `user_id` int(4) DEFAULT NULL,
@@ -331,7 +332,7 @@ CREATE TABLE `tabletraining` (
 --
 
 CREATE TABLE `user` (
-  `user_id` int(4) NOT NULL,
+  `user_id` int(4) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `id_card` varchar(13) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -453,100 +454,6 @@ ALTER TABLE `tabletraining`
 ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`);
 
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `accountpayment`
---
-ALTER TABLE `accountpayment`
-  MODIFY `account_id` int(4) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `appeal`
---
-ALTER TABLE `appeal`
-  MODIFY `appeal_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `coaching`
---
-ALTER TABLE `coaching`
-  MODIFY `coaching_id` int(4) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `comment`
---
-ALTER TABLE `comment`
-  MODIFY `comment_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `course`
---
-ALTER TABLE `course`
-  MODIFY `course_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- AUTO_INCREMENT for table `effectrecord`
---
-ALTER TABLE `effectrecord`
-  MODIFY `effectrecord_id` int(4) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `linkvideo`
---
-ALTER TABLE `linkvideo`
-  MODIFY `linkvideo_id` int(4) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `nutrition`
---
-ALTER TABLE `nutrition`
-  MODIFY `nutrition_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `payment`
---
-ALTER TABLE `payment`
-  MODIFY `payment_id` int(4) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `photo`
---
-ALTER TABLE `photo`
-  MODIFY `photo_id` int(4) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `posture`
---
-ALTER TABLE `posture`
-  MODIFY `posture_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `practicerecord`
---
-ALTER TABLE `practicerecord`
-  MODIFY `practicerecord_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `recommend`
---
-ALTER TABLE `recommend`
-  MODIFY `recommend_id` int(4) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `tabletraining`
---
-ALTER TABLE `tabletraining`
-  MODIFY `tabletraining_id` int(4) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `user_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

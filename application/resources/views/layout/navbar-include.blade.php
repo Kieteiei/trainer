@@ -8,7 +8,7 @@
                         <form id="form-logout" action="/auth/logout" method="post">
                             @csrf
                         </form>
-                        <a href="#" onclick="document.getElementById('form-logout').submit();"> Logout </a>
+                        <a onclick="document.getElementById('form-logout').submit();"> Logout </a>
                     </li class="dropdown">
                 @else
                     <li class="dropdown">
@@ -29,20 +29,20 @@
             <h1>เข้าสู่ระบบ</h1><br>
             <form action="/auth/login" method="post">
                 @csrf
-                
+
                 <input type="text" name="user_name" placeholder="Username">
                 <input type="password" name="password" placeholder="Password">
 
                 <input type="submit" name="login" class="login loginmodal-submit" value="Login">
-                <fb:login-button 
+                <fb:login-button
                     scope="public_profile,email"
-                    class="fb-login-button" 
-                    data-max-rows="1" 
-                    data-size="large" 
-                    data-button-type="login_with" 
-                    data-show-faces="false" 
-                    data-auto-logout-link="false" 
-                    data-use-continue-as="false" 
+                    class="fb-login-button"
+                    data-max-rows="1"
+                    data-size="large"
+                    data-button-type="login_with"
+                    data-show-faces="false"
+                    data-auto-logout-link="false"
+                    data-use-continue-as="false"
                     data-width="290"
                     onlogin="checkLoginState();">
                     Continue with Facebook
@@ -66,15 +66,15 @@
                 <input type="password" name="password" placeholder="Password">
 
                 <input type="submit" name="login" class="login loginmodal-submit" value="Register">
-                <fb:login-button 
+                <fb:login-button
                     scope="public_profile,email"
-                    class="fb-login-button" 
-                    data-max-rows="1" 
-                    data-size="large" 
-                    data-button-type="login_with" 
-                    data-show-faces="false" 
-                    data-auto-logout-link="false" 
-                    data-use-continue-as="false" 
+                    class="fb-login-button"
+                    data-max-rows="1"
+                    data-size="large"
+                    data-button-type="login_with"
+                    data-show-faces="false"
+                    data-auto-logout-link="false"
+                    data-use-continue-as="false"
                     data-width="290"
                     onlogin="checkLoginState();">
                     Continue with Facebook
@@ -88,4 +88,4 @@
         </div>
     </div>
 </div>
-    
+

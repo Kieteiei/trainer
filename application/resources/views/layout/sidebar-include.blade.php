@@ -3,7 +3,9 @@
     @if (Session::has('auth_user'))
         <div class="profile-sidebar">
             <div class="profile-userpic">
-                <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
+                <a href="/page/me">
+                    <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
+                </a>
             </div>
             <div class="profile-usertitle">
                 <div class="profile-usertitle-name">{{ Session::get('auth_user')['user_name'] }}</div>
@@ -43,7 +45,7 @@
             <li><a href="/admin/photos"><i class="fa fa-calendar">&nbsp;</i> รูปการออกกำลังกาย</a></li>
             <li><a href="/admin/videos"><i class="fa fa-calendar">&nbsp;</i> วีดีโอการออกกำลังกาย</a></li>
         @endif
-        
+
         <li class="parent ">
             <a data-toggle="collapse" href="#sub-item-1">
                 <i class="fa fa-navicon">&nbsp;</i> Multilevel <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><i class="fa fa-plus"></i></span>

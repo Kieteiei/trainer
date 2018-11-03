@@ -11,7 +11,7 @@ class Course extends Model
 
     public function user()
     {
-        return $this->hasOne(new User(), 'user_id');
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
 
     public static function _create($createArray)

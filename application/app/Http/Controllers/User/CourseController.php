@@ -10,6 +10,10 @@ class CourseController extends Controller
 {
     public function renderAll()
     {
-        return view('page.user.course');
+        $courses = Course::with('user')->get();
+
+        return view('page.user.course', [
+            'courses' => $courses
+        ]);
     }
 }

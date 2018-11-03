@@ -15,7 +15,13 @@ Route::get('/test', function() {
     return view('test');
 });
 
+Route::get('/storage/{dir}/{path}',  'FileController@getStorageFile');
+
 Route::get('/', 	        'PageController@index');
+
+Route::get('/page/me',     'PageController@renderUser');
+Route::patch('/page/me',     'PageController@updateUser');
+
 Route::get('/page/bmi',     'PageController@renderBmi');
 Route::post('/page/bmi',    'PageController@renderCalBmi');
 Route::get('/page/bmr',     'PageController@renderBmr');
@@ -64,8 +70,8 @@ Route::group(['namespace' => 'Trainer', 'prefix' => 'trainer'],
         Route::get('/courses',              'CourseController@renderAll');
         Route::post('/courses',             'CourseController@create');
         Route::get('/courses/{id}',         'CourseController@renderOne');
-        Route::patch('/courses',            'CourseController@update');
-        Route::delete('/courses',           'CourseController@delete');
+        Route::patch('/courses/{id}',       'CourseController@update');
+        Route::delete('/courses/{id}',      'CourseController@delete');
 
         Route::get('/nutritions',           'NutritionController@renderAll');
         Route::post('/nutritions',          'NutritionController@create');
@@ -91,7 +97,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'],
         Route::get('/users/{id}',           'UserController@renderOne');
         Route::patch('/users',              'UserController@update');
         Route::delete('/users',             'UserController@delete');
-        
+
         Route::get('/courses',              'CourseController@renderAll');
         Route::post('/courses',             'CourseController@create');
         Route::get('/courses/{id}',         'CourseController@renderOne');
