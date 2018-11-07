@@ -12,5 +12,6 @@ trainerfre
 20875af79e
 
 database
+trainerfre_lance
 trainerfre_admin
 admin1234

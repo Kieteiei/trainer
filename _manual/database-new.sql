@@ -224,8 +224,3 @@ INSERT INTO `user` (`user_id`, `user_name`, `password`, `id_card`, `address`, `b
   (3, 'user', '1234', NULL, NULL, NULL, 'tangk1995@gmail.com', NULL, NULL, NULL, NULL, NULL, 'USER'),
   (4, 'kietzaza', '1234', NULL, NULL, NULL, 'tangk1995@gmail.com', NULL, NULL, NULL, NULL, NULL, 'ADMIN'),
   (5, 'trainer', '1234', NULL, NULL, NULL, 'asdasd@asd.com', NULL, NULL, NULL, NULL, NULL, 'TRAINER');
-
-INSERT INTO `posture` (`posture_id`, `posture_name`, `posture_detail`, `posture_quote`) VALUES
-  (1, 'eiei', 'eieiei', 'eieiei'),
-  (2, 'Squat', '??????????????????????????????????????????????', ''),
-  (3, '???????', '???????51??', 'google');
