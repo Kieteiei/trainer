@@ -4,19 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Appeal extends Model
+class Payment extends Model
 {
-    protected $table = 'Appeal';
-    protected $primaryKey = 'apeal_id';
+    protected $table = 'payment';
+    protected $primaryKey = 'payment_id';
 
-    public function reporter_user()
+    public function customer_user()
     {
-        return $this->belongsTo('App\Models\User', 'reporter_user_id');
+        return $this->belongsTo('App\Models\User', 'customer_user_id');
     }
 
-    public function reported_user()
+    public function trainer_user()
     {
-        return $this->belongsTo('App\Models\User', 'reported_user_id');
+        return $this->belongsTo('App\Models\User', 'trainer_user_id');
     }
 
     public static function _create($createArray)

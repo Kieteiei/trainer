@@ -10,8 +10,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-  use Notifiable;
-  
-  protected $table = 'user';
-  protected $primaryKey = 'user_id';
+    use Notifiable;
+
+    protected $table = 'user';
+    protected $primaryKey = 'user_id';
+
+    public static function _create($createArray)
+    {
+        $model = new Static;
+
+        foreach($createArray as $field => $value)
+        {
+            $model->$field = $value;
+        }
+
+        $model->save();
+
+        return $model;
+    }
 }

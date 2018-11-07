@@ -32,6 +32,30 @@ class AuthController extends Controller
         return redirect()->back();
     }
 
+    public function register(Request $request)
+    {
+        $user = User::where('user_name', $request->user_name)
+            ->first();
+
+        if ($user) {
+            Session::flash('flash_toastr', [
+                'type' => 'error',
+                'message' => 'ชื่อผู้ใช้ซ้ำในระบบ'
+            ]);
+
+            return redirect()->back();
+        }
+
+        User::_create($request->except('_token'));
+
+        Session::flash('flash_toastr', [
+            'type' => 'success',
+            'message' => 'สมัครสมาชิกสำเร็จ'
+        ]);
+
+        return redirect()->back();
+    }
+
     public function logout(Request $request)
     {
         Session::forget('auth_user');

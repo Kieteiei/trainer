@@ -988,10 +988,6 @@ h1.page-header {
 .chat ul li .chat-body p {
   margin: 0; }
 
-.chat .panel-body {
-  overflow-y: scroll;
-  height: 300px; }
-
 .chat-body small {
   margin-left: 5px; }
 

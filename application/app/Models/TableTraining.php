@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Nutrition extends Model
+class TableTraining extends Model
 {
-    protected $table = 'nutrition';
-    protected $primaryKey = 'nutrition_id';
+    protected $table = 'tabletraining';
+    protected $primaryKey = 'tabletraining_id';
 
     public static function _create($createArray)
     {

@@ -11,7 +11,7 @@
 				<li class="active">คอร์ส</li>
 			</ol>
 		</div>
-        <h1>คอร์ส <a class="btn btn-warning" href="/trainer/courses"> ย้อนกลับ</a></h1>
+        <h1>คอร์ส <a class="btn btn-primary" href="/trainer/courses"> ย้อนกลับ</a></h1>
 
         <div class="panel panel-default">
             <div class="panel-heading">แก้ไขคอร์ส</div>
@@ -27,12 +27,12 @@
 
                     <div class="form-group">
                         <label>กิจกรรม</label>
-                        <textarea type="text" class="form-control" name="activity">{{ $course->activity }}</textarea>
+                        <textarea type="text" class="form-control ckedit-init" name="activity">{{ $course->activity }}</textarea>
                     </div>
 
                     <div class="form-group">
                         <label>รูปภาพ</label>
-                        <input type="file" class="form-control" name="photo">
+                        <input type="file" class="form-control" name="photo"> <br>
                         <img src="/storage/{{ $course->img_path }}" style="width:200px" alt="photo">
                     </div>
 

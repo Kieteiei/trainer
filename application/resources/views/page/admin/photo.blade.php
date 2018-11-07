@@ -31,13 +31,13 @@
                         <tr>
                             <td class="text-center"> {{ ++$i }} </td>
                             <td>{{ $photo->photo_id }}</td>
-                            <td>{{ $photo->photo_name }}</td>   
-                            <td>{{ $photo->location_detail }}</td>    
-                            <td>{{ $photo->photo_quote }}</td>    
-                            <td class="text-center">  
+                            <td>{{ $photo->photo_name }}</td>
+                            <td>{{ $photo->location_detail }}</td>
+                            <td>{{ $photo->photo_quote }}</td>
+                            <td class="text-center">
                                 <a class="btn btn-warning" href="/api/update">Update</a>
                                 <a class="btn btn-danger" href="/api/Delete">Delete</a>
-                            </td>    
+                            </td>
                         </tr>
                     @endforeach
                 </table>
@@ -52,21 +52,23 @@
 
                     <div class="form-group">
                         <label>ชื่อภาพการออกกำลังกาย</label>
-                        <input type="text" class="form-control" name="photo_name" > 
+                        <input type="text" class="form-control" name="photo_name" >
                     </div>
 
                     <div class="form-group">
                         <label>ภาพการออกกำลังกาย</label>
-                        <input type="file" class="form-control" name="location_detail" > 
+                        <input type="file" class="form-control" name="location_detail" >
                     </div>
 
                     <div class="form-group">
                         <label>ที่มาข้อมูล</label>
-                        <input type="text" class="form-control" name="photo_quote" > 
+                        <input type="text" class="form-control" name="photo_quote" >
                     </div>
-                   
+
                     <button type="submit" class="btn btn-primary" >เพิ่มข้อมูล</button>
                 </form>
-            </div> 
+            </div>
         </div>
     </div>
+
+@endsection

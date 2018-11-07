@@ -65,8 +65,6 @@ class CourseController extends Controller
         ]);
 
         if ($request->hasFile('photo')) {
-            $path = $request->file('photo')->store('course');
-
             $course = Course::where('user_id', $user->user_id)
                 ->where('course_id', $course_id)
                 ->first();

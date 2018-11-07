@@ -5,23 +5,23 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Models\Appeal;
-use Session;
+use App\Models\User;
 
-class AppealController extends Controller
+class UserController extends Controller
 {
     public function renderAll()
     {
-        $appeals = Appeal::with('reporter_user', 'reported_user')->get();
+        $users = User::all();
 
-        return view('page.admin.appeal', [
-            'appeals' => $appeals
+        return view('page.admin.user', [
+            'users' => $users
         ]);
     }
 
-    public function delete(Request $request, $appeal_id)
+    public function update(Request $request, $user_id)
     {
-        Appeal::where('appeal_id', $appeal_id)->delete();
+        $user = User::where('user_id', $user_id)
+            ->update(['status' => $request->status]);
 
         Session::flash('flash_toastr', [
             'type' => 'success',

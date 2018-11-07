@@ -1,31 +1,17 @@
-        <script
-            src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
-
-        <!-- Latest compiled and minified JavaScript -->
-        <script 
-            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
-            crossorigin="anonymous"></script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
-        <script src="https://cdn.ckeditor.com/ckeditor5/10.1.0/classic/ckeditor.js"></script>
 
         <script>
             ClassicEditor
-            .create( document.querySelector( 'textarea' ), {
-                toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'undo', 'redo' ],
-            })
-            .then( editor => {
-                console.log( editor );
-            })
-            .catch( error => {
-                console.error( error );
-            });
+                .create( document.querySelector('textarea.ckedit-init'), {
+                    toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'undo', 'redo' ],
+                })
+                .then( editor => {
+                    console.log( editor );
+                })
+                .catch( error => {
+                    console.error( error );
+                });
         </script>
-            
+
         <script src="/js/custom.js"></script>
 
         <script>
@@ -56,7 +42,7 @@
                             fbname=response.name;
                             fbemail=response.email;
                             fbID=response.id;
-                            
+
                             $("#hdnFbID").val(fbID);
                             $("#hdnName ").val(fbname);
                             $("#hdnEmail").val(fbemail);
@@ -119,11 +105,15 @@
 
         <script>
             toastr.options.progressBar = true;
-            toastr.options.positionClass = "toast-top-full-width";
+            toastr.options.positionClass = "toast-bottom-full-width";
 
             @if (Session::has('flash_toastr'))
                 toastr.{{ Session::get('flash_toastr')['type'] }}("{{ Session::get('flash_toastr')['message'] }}");
             @endif
+        </script>
+
+        <script>
+
         </script>
     </body>
 </html>

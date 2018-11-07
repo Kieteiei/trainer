@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Nutrition extends Model
+class Post extends Model
 {
-    protected $table = 'nutrition';
-    protected $primaryKey = 'nutrition_id';
+    protected $table = 'Post';
+    protected $primaryKey = 'post_id';
 
     public static function _create($createArray)
     {
@@ -21,5 +21,10 @@ class Nutrition extends Model
         $model->save();
 
         return $model;
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
 }

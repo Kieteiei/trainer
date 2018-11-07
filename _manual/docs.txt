@@ -1,0 +1,16 @@
+ftp
+ftp.trainerfreelance.com
+103.4.219.253
+2121
+trainerfre
+20875af79e
+
+control panel
+http://www.trainerfreelance.com:2222
+https://103.4.219.253:3389
+trainerfre
+20875af79e
+
+database
+trainerfre_admin
+admin1234

@@ -8,9 +8,10 @@
 				<li><a href="/">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">คอร์ส</li>
+				<li class="active">ค้นหาคอร์สเรียน</li>
 			</ol>
 		</div>
+        <h1>ค้นหาคอร์สเรียน</h1>
         <br>
 
         <div class="panel panel-default">
@@ -29,7 +30,7 @@
                                     <div class="data">
                                         <div class="content">
                                             <span class="author">{{ $course->user->user_name }}</span>
-                                            <h1 class="title"><a href="#">{{ $course->course_name}}</a></h1>
+                                            <h1 class="title"><a href="/page/trainer/{{ $course->user->user_id }}">{{ $course->course_name}}</a></h1>
                                             <p class="text">{!! $course->activity !!}</p>
                                         <label for="show-menu-{{ $i }}" class="menu-button"><span></span></label>
                                         </div>

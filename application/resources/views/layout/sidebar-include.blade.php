@@ -8,7 +8,7 @@
                 </a>
             </div>
             <div class="profile-usertitle">
-                <div class="profile-usertitle-name">{{ Session::get('auth_user')['user_name'] }}</div>
+                <div class="profile-usertitle-name"><a href="/page/me">{{ substr(Session::get('auth_user')->fullname,0,13) }}</a></div>
                 <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
             </div>
             <div class="clear"></div>
@@ -16,45 +16,32 @@
     @endif
     <div class="divider"></div>
     <ul class="nav menu">
-        <li><a href="/page/bmi"><i class="fa fa-dashboard">&nbsp;</i> bmi</a></li>
-        <li><a href="/page/bmr"><i class="fa fa-calendar">&nbsp;</i> bmr</a></li>
+        <li><a href="/page/bmi"><i class="fa fa-calculator">&nbsp;</i> คำนวณค่า BMI</a></li>
+        <li><a href="/page/bmr"><i class="fa fa-calculator">&nbsp;</i> คำนวณค่า BMR</a></li>
+        <li class="visible-xs"><a href="/page/course"><i class="fa fa-search">&nbsp;</i> ค้นหาคอร์สเรียน</a></li>
+        <li class="visible-xs"><a href="/page/search-users"><i class="fa fa-users">&nbsp;</i> ค้นหาลูกค้า/เทรนเนอร์</a></li>
+        <hr>
 
         @if (Session::has('auth_user') && Session::get('auth_type') === 'USER')
-            <li><a href="/user/courses"><i class="fa fa-calendar">&nbsp;</i> คอร์ส</a></li>
-            <li><a href="/user/trainings"><i class="fa fa-calendar">&nbsp;</i> การเทรน</a></li>
-            <li><a href="/user/nutritions"><i class="fa fa-calendar">&nbsp;</i> โภชนาการ</a></li>
-            <li><a href="/user/practicerecords"><i class="fa fa-calendar">&nbsp;</i> บันทึกการฝึก</a></li>
-            <li><a href="/user/effectrecords"><i class="fa fa-calendar">&nbsp;</i> บันทึกผลการฝึก</a></li>
+            <li><a href="/page/me"><i class="fa fa-user-o">&nbsp;</i> โปรไฟล์ของฉัน </a></li>
+            <li><a href="/user/trainings"><i class="fa fa-calendar">&nbsp;</i> การเทรนของฉัน</a></li>
+            <li><a href="/user/payments"><i class="fa fa-credit-card">&nbsp;</i> การชำระเงิน</a></li>
         @endif
 
         @if (Session::has('auth_user') && Session::get('auth_type') === 'TRAINER')
-            <li><a href="/trainer/courses"><i class="fa fa-calendar">&nbsp;</i> คอร์ส</a></li>
-            <li><a href="/trainer/trainings"><i class="fa fa-calendar">&nbsp;</i> การเทรน</a></li>
-            <li><a href="/trainer/nutritions"><i class="fa fa-calendar">&nbsp;</i> โภชนาการ</a></li>
-            <li><a href="/trainer/practicerecords"><i class="fa fa-calendar">&nbsp;</i> บันทึกการฝึก</a></li>
-            <li><a href="/trainer/effectrecords"><i class="fa fa-calendar">&nbsp;</i> บันทึกผลการฝึก</a></li>
+            <li><a href="/page/me"><i class="fa fa-user-circle-o">&nbsp;</i> โปรไฟล์ของฉัน </a></li>
+            <li><a href="/trainer/courses"><i class="fa fa-clipboard">&nbsp;</i> คอร์สของฉัน</a></li>
+            <li><a href="/trainer/trainings"><i class="fa fa-universal-access">&nbsp;</i> การเทรนลูกค้า</a></li>
+            <li><a href="/trainer/payments"><i class="fa fa-credit-card">&nbsp;</i> การชำระเงิน</a></li>
         @endif
 
         @if (Session::has('auth_user') && Session::get('auth_type')  === 'ADMIN')
+            <li><a href="/page/me"><i class="fa fa-user-o">&nbsp;</i> โปรไฟล์ของฉัน </a></li>
             <li><a href="/admin/users"><i class="fa fa-calendar">&nbsp;</i> ผู้ใช้งาน</a></li>
-            <li><a href="/admin/courses"><i class="fa fa-calendar">&nbsp;</i> คอร์ส</a></li>
-            <li><a href="/admin/trainings"><i class="fa fa-calendar">&nbsp;</i> การเทรน</a></li>
-            <li><a href="/admin/appeals"><i class="fa fa-calendar">&nbsp;</i> ร้องเรียน</a></li>
-            <li><a href="/admin/comments"><i class="fa fa-calendar">&nbsp;</i> ความคิดเห็น</a></li>
-            <li><a href="/admin/postures"><i class="fa fa-calendar">&nbsp;</i> ท่าการออกกำลังกาย</a></li>
+            <li><a href="/admin/appeals"><i class="fa fa-calendar">&nbsp;</i> การร้องเรียน</a></li>
+            {{-- <li><a href="/admin/postures"><i class="fa fa-calendar">&nbsp;</i> ท่าการออกกำลังกาย</a></li>
             <li><a href="/admin/photos"><i class="fa fa-calendar">&nbsp;</i> รูปการออกกำลังกาย</a></li>
-            <li><a href="/admin/videos"><i class="fa fa-calendar">&nbsp;</i> วีดีโอการออกกำลังกาย</a></li>
+            <li><a href="/admin/videos"><i class="fa fa-calendar">&nbsp;</i> วีดีโอการออกกำลังกาย</a></li> --}}
         @endif
-
-        <li class="parent ">
-            <a data-toggle="collapse" href="#sub-item-1">
-                <i class="fa fa-navicon">&nbsp;</i> Multilevel <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><i class="fa fa-plus"></i></span>
-            </a>
-            <ul class="children collapse" id="sub-item-1">
-                <li>
-                    <a class="" href="#"><span class="fa fa-arrow-right">&nbsp;</span> Sub Item 1</a>
-                </li>
-            </ul>
-        </li>
     </ul>
 </div>
